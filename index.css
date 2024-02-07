@@ -1,4 +1,44 @@
+/* page layout  */
 body {
-    margin: 0;
+    width: 600px;
+    margin: auto;
+    padding: 0;
 } 
+
+header {
+    width: 600px;
+    height: 200px;
+    color: FFFFFF;
+}
+
+header h1 {
+    padding: 0;
+    margin: 0px 0px 5px 0px;
+}
+
+header h3 {
+    margin: 0;
+    padding: 0;
+}
+
+header div{
+    padding-top: 60px ;
+    margin: 0px 34px;
+}
+/* background and font styling */
+body{
+    background-color: DEDEDE;
+    font-family: 'Kalam', sans-serif, cursive;
+}
+
+header {
+    background-image:url(style-items/stock-burger-img.jpg);
+    background-position: 0px -170px;
+    background-size: 700px;
+}
+
+main {
+    height: 100vh;
+    background-color: white;
+}
 
