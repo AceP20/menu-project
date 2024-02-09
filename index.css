@@ -76,3 +76,8 @@ main h2{
 .menu-card{
     border-bottom: 1px solid lightgray;
 }
+
+main i {
+    font-size: 25pt;
+    margin: auto 0 auto auto;
+}

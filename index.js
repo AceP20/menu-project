@@ -10,7 +10,7 @@ menuArray.forEach(item => {
         <h4>${item.name}</h4>
         <p>${item.ingredients}</p>
         <h4>$${item.price}</h4>
-        </spam></div>`
+        </spam><i class="fa-solid fa-plus"></i></div>`
     )
 }); 
 
@@ -20,4 +20,4 @@ function renderMenu(menu){
 
 renderMenu(menuOptions.join(''))
 
-// Add plus button on right and begin the function for the Your order menu
+//create Your order bottom of the page
