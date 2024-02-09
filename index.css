@@ -26,6 +26,32 @@ header div{
     margin: 0px 34px;
 }
 
+main {
+    padding: 25px;
+}
+
+main div{
+    display: flex;
+}
+
+main h2, main h4, main p{
+    margin: 5px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+
+main spam{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-card{
+    padding: 30px;
+}
+
 /* background and font styling */
 body{
     background-color: DEDEDE;
@@ -43,3 +69,10 @@ main {
     background-color: white;
 }
 
+main h2{
+    font-size: 50pt;
+}
+
+.menu-card{
+    border-bottom: 1px solid lightgray;
+}

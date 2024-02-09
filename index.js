@@ -3,11 +3,14 @@ import menuArray from '/data.js'
 const menuOptions = []
 
 menuArray.forEach(item => {
-    menuOptions.push(
-        `<h2>${item.emoji}</h2>
+    menuOptions.push(`
+        <div class="menu-card">
+        <h2>${item.emoji}</h2>
+        <spam>
         <h4>${item.name}</h4>
         <p>${item.ingredients}</p>
-        <h4>${item.price}</h4>`
+        <h4>$${item.price}</h4>
+        </spam></div>`
     )
 }); 
 
@@ -17,5 +20,4 @@ function renderMenu(menu){
 
 renderMenu(menuOptions.join(''))
 
-// we need to fix the layout of the render in the main page
-// also need to set the horizontal line divider
+// Add plus button on right and begin the function for the Your order menu
