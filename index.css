@@ -56,6 +56,7 @@ main spam{
 body{
     background-color: DEDEDE;
     font-family: 'Kalam', sans-serif, cursive;
+    cursor: default;
 }
 
 header {
@@ -80,6 +81,7 @@ main h2{
 main i {
     font-size: 25pt;
     margin: auto 0 auto auto;
+    cursor: pointer;
 }
 
 #customer-order {

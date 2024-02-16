@@ -22,5 +22,5 @@ export const menuArray = [
     }
 ]
 
-export const customerOrder = ["testing"]
+export const customerOrder = []
 
