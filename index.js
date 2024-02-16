@@ -1,4 +1,4 @@
-import { menuArray, customerOrder } from '/data.js'
+import { menuArray, customerOrderArr } from '/data.js'
 
 const menuOptions = []
 
@@ -21,8 +21,19 @@ function renderMenu(menu){
  
 renderMenu(menuOptions.join(''))
 
-//create Your order bottom of the page
-
+// adds whichever element is clicked to customer order array
 document.addEventListener('click', (e)=>{
-    console.log(e.target.dataset.item)
+    if (e.target.dataset.item){
+        customerOrderArr.push((e.target.dataset.item))
+    }
 })
+
+document.getElementById('testBtn').addEventListener('click', ()=>{
+    console.log(customerOrderArr)
+})
+
+if (customerOrderArr.length === 0){
+    document.getElementById('customer-order').style.display = 'none'
+} 
+
+// try to fix the display when customerOrderArr is empty compared to when has elements in it
