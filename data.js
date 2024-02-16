@@ -1,4 +1,4 @@
-const menuArray = [
+export const menuArray = [
     {
         name: "Pizza",
         ingredients: ["pepperoni", "mushrom", "mozarella"],
@@ -22,4 +22,5 @@ const menuArray = [
     }
 ]
 
-export default menuArray
+export const customerOrder = ["testing"]
+

@@ -81,3 +81,9 @@ main i {
     font-size: 25pt;
     margin: auto 0 auto auto;
 }
+
+#customer-order {
+    font-size: 20pt;
+    display: flex;
+    justify-content: center;
+}
