@@ -5,12 +5,22 @@ body {
     padding: 0;
     user-select: none;
     -webkit-user-select: none;
+
+    /* styling */
+    background-color: #DEDEDE;
+    font-family: 'Kalam', sans-serif, cursive;
+    cursor: default;
 } 
 
 header {
     width: 600px;
     height: 200px;
-    color: FFFFFF;
+    color: #FFFFFF;
+
+    /* styling */
+    background-image:url(style-items/stock-burger-img.jpg);
+    background-position: 0px -170px;
+    background-size: 700px;
 }
 
 header h1 {
@@ -30,6 +40,10 @@ header div{
 
 main {
     padding: 25px;
+    height: 100vh;
+
+    /* styling */
+    background-color: white;
 }
 
 main div{
@@ -40,44 +54,13 @@ main h2, main h4, main p{
     margin: 5px;
 }
 
-.menu{
-    display: flex;
-    flex-direction: column;
-}
-
-main spam{
-    display: flex;
-    flex-direction: column;
-}
-
-.menu-card{
-    padding: 30px;
-}
-
-/* background and font styling */
-body{
-    background-color: DEDEDE;
-    font-family: 'Kalam', sans-serif, cursive;
-    cursor: default;
-}
-
-header {
-    background-image:url(style-items/stock-burger-img.jpg);
-    background-position: 0px -170px;
-    background-size: 700px;
-}
-
-main {
-    height: 100vh;
-    background-color: white;
-}
-
 main h2{
     font-size: 50pt;
 }
 
-.menu-card{
-    border-bottom: 1px solid lightgray;
+.menu{
+    display: flex;
+    flex-direction: column;
 }
 
 main i {
@@ -86,8 +69,60 @@ main i {
     cursor: pointer;
 }
 
+.menu-card{
+    padding: 30px;
+
+    /* styling */
+    border-bottom: 1px solid lightgray;
+}
+
+main section h4{
+    text-align: center;
+    font-size: 20pt;
+}
+
+#total-price-display {
+    padding-top:20px;
+
+    /* styling */
+    font-size: 16pt;
+    border-top: 2px solid black;
+}
+
+#customer-order span{
+    display: flex;
+    align-items: center;
+}
+
 #customer-order {
     font-size: 20pt;
-    display: flex;
     justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
+
+.remove-btn{
+    font-size: 12pt;
+    border: none;
+    background-color: white;
+    color: gray;
+    cursor: pointer;
+}
+.price-display{
+    margin-left: auto;
+}
+
+#total-price-display{
+    display: flex;
+}
+
+#total-price-display span{
+    margin-left: auto;
+}
+
+.hidden{
+    display: none;
+}
+
+
+
