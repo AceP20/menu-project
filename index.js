@@ -26,14 +26,14 @@ document.addEventListener('click', (e) => {
     if (e.target.dataset.name) {
         customerOrderArr.push(e.target.dataset)
         addCustomerOrder(e.target.dataset)
-    } 
+    }
 })
 
 //removes whichever element user deletes on customer order section
 document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('remove-btn')){
+    if (e.target.classList.contains('remove-btn')) {
         const customerOrder = customerOrderArr.map(currentFood => currentFood.name)
-        if (customerOrder.includes(e.target.dataset.item)){
+        if (customerOrder.includes(e.target.dataset.item)) {
             const indexToRemove = customerOrder.indexOf(e.target.dataset.item)
             customerOrderHTMLArr.splice(indexToRemove, 1)
             customerOrderArr.splice(indexToRemove, 1)
@@ -44,7 +44,7 @@ document.addEventListener('click', (e) => {
 
 const customerOrderHTMLArr = []
 
-const addCustomerOrder = (itemsOrdered) =>{
+const addCustomerOrder = (itemsOrdered) => {
     customerOrderHTMLArr.push(`
     <span><p>${itemsOrdered.name}</p><button data-item='${itemsOrdered.name}' class='remove-btn'>(remove)</button><p class='price-display'>$${itemsOrdered.price}</p></span>
     `
@@ -52,11 +52,11 @@ const addCustomerOrder = (itemsOrdered) =>{
     renderCustomerOrder()
 }
 
-const renderCustomerOrder = () =>{
+const renderCustomerOrder = () => {
     document.querySelector('#customer-order').innerHTML = customerOrderHTMLArr.join(' ')
-    
+
     //adds up total price and updates the HTML on site
-    const totalPrice = customerOrderArr.reduce((sum, currentItem )=> sum + Number(currentItem.price), 0)
+    const totalPrice = customerOrderArr.reduce((sum, currentItem) => sum + Number(currentItem.price), 0)
     document.querySelector('#total-price-display').innerHTML = `Total Price: <span>$${totalPrice}</span>`
 }
 
@@ -71,7 +71,5 @@ const renderCustomerOrder = () =>{
 
 
 
-document.querySelector('#testBtn').addEventListener('click', () => {
-    console.log(customerOrderArr)
-})
+
 
