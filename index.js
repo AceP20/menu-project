@@ -25,26 +25,34 @@ renderMenu(menuOptions.join(''))
 document.addEventListener('click', (e) => {
     if (e.target.dataset.name) {
         customerOrderArr.push(e.target.dataset)
-        renderCustomerOrder(e.target.dataset)
+        addCustomerOrder(e.target.dataset)
     } 
 })
 
+//removes whichever element user deletes on customer order section
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('remove-btn')){
-        console.log(customerOrderArr)
-        if(customerOrderArr.includes(e.target.dataset.item)){
-            console.log('working')
+        const customerOrder = customerOrderArr.map(currentFood => currentFood.name)
+        if (customerOrder.includes(e.target.dataset.item)){
+            const indexToRemove = customerOrder.indexOf(e.target.dataset.item)
+            customerOrderHTMLArr.splice(indexToRemove, 1)
+            customerOrderArr.splice(indexToRemove, 1)
+            renderCustomerOrder()
         }
     }
 })
 
 const customerOrderHTMLArr = []
 
-const renderCustomerOrder = (itemsOrdered) =>{
+const addCustomerOrder = (itemsOrdered) =>{
     customerOrderHTMLArr.push(`
     <span><p>${itemsOrdered.name}</p><button data-item='${itemsOrdered.name}' class='remove-btn'>(remove)</button><p class='price-display'>$${itemsOrdered.price}</p></span>
     `
     )
+    renderCustomerOrder()
+}
+
+const renderCustomerOrder = () =>{
     document.querySelector('#customer-order').innerHTML = customerOrderHTMLArr.join(' ')
     
     //adds up total price and updates the HTML on site
