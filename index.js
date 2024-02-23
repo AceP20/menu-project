@@ -15,6 +15,7 @@ menuArray.forEach(item => {
     )
 });
 
+//renders the html into the index.html document
 function renderMenu(menu) {
     document.querySelector('#menu').innerHTML = menu
 }
@@ -25,53 +26,29 @@ renderMenu(menuOptions.join(''))
 document.addEventListener('click', (e) => {
     if (e.target.dataset.name) {
         customerOrderArr.push(e.target.dataset)
-        addCustomerOrder(e.target.dataset)
+        renderCustomerOrder()
     }
 })
 
-//removes whichever element user deletes on customer order section
+//removes an element from the customer order menu after delete is clicked on item
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('remove-btn')) {
-        const customerOrder = customerOrderArr.map(currentFood => currentFood.name)
-        if (customerOrder.includes(e.target.dataset.item)) {
-            const indexToRemove = customerOrder.indexOf(e.target.dataset.item)
-            customerOrderHTMLArr.splice(indexToRemove, 1)
-            customerOrderArr.splice(indexToRemove, 1)
+        const itemToRemove = e.target.dataset.item
+
+        //find location in array of item to remove
+        const itemIndex = customerOrderArr.findIndex(item => item.name === itemToRemove)
+
+        //remove item and update the render to HTML document
+        if (itemIndex !== -1) {
+            customerOrderArr.splice(itemIndex, 1)
+
             renderCustomerOrder()
         }
     }
 })
 
-let customerOrderHTMLArr = []
-
-const addCustomerOrder = (itemsOrdered) => {
-    //Gather how of the same items are in the customers order
-    const counts = {}
-    customerOrderArr.forEach(currentItem => {
-        counts[currentItem.name] = (counts[currentItem.name] || 0) + 1
-    })
-
-    //Generate HTML for each item in the customer order
-    const itemHTMLArr = Object.keys(counts).map(itemName => {
-        const count = counts[itemName]
-        return `
-        <span>
-            <p>${itemName}</p>
-            <p>x${count}</p>
-            <button data-item='${itemName}' class='remove-btn'>(remove)</button>
-            <p class='price-display'>$${getPriceForItem(itemName)}</p>
-        </span>
-    `
-    })
-
-    customerOrderHTMLArr = itemHTMLArr
-
-    renderCustomerOrder()
-
-}
-
+//logic to get the price for each item 
 const getPriceForItem = (itemName) => {
-    // Add logic to get the price for each item (e.g., from a menu or predefined prices)
     switch (itemName) {
         case 'Hamburger':
             return 12;
@@ -85,9 +62,28 @@ const getPriceForItem = (itemName) => {
 };
 
 const renderCustomerOrder = () => {
-    document.querySelector('#customer-order').innerHTML = customerOrderHTMLArr.join(' ')
+    //counts to see how many items have been ordered by customer and saves data in object
+    const counts = {}
+    customerOrderArr.forEach(currentItem => {
+        counts[currentItem.name] = (counts[currentItem.name] || 0) + 1
+    })
 
-    //adds up total price and updates the HTML on site
+    //goes through the items ordered(keys) and the counts value of each item and constructs HTML to diplay an item once and 
+    const itemHTMLArr = Object.keys(counts).map(itemName => {
+        const count = counts[itemName]
+        return `
+        <span>
+        <p>${itemName}</p>
+        <p id='item-count'>x${count}</p>
+        <button data-item='${itemName}' class='remove-btn'>(remove)</button>
+        <p class='price-display'>$${getPriceForItem(itemName)}</p>
+        </span>
+        `
+    })
+
+    document.querySelector('#customer-order').innerHTML = itemHTMLArr.join(' ')
+
+    //sums up prices of items ordered so far and displays the total
     const totalPrice = customerOrderArr.reduce((sum, currentItem) => sum + Number(currentItem.price), 0)
     document.querySelector('#total-price-display').innerHTML = `Total Price: <span>$${totalPrice}</span>`
 }
