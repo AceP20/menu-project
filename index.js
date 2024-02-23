@@ -42,15 +42,47 @@ document.addEventListener('click', (e) => {
     }
 })
 
-const customerOrderHTMLArr = []
+let customerOrderHTMLArr = []
 
 const addCustomerOrder = (itemsOrdered) => {
-    customerOrderHTMLArr.push(`
-    <span><p>${itemsOrdered.name}</p><button data-item='${itemsOrdered.name}' class='remove-btn'>(remove)</button><p class='price-display'>$${itemsOrdered.price}</p></span>
+    //Gather how of the same items are in the customers order
+    const counts = {}
+    customerOrderArr.forEach(currentItem => {
+        counts[currentItem.name] = (counts[currentItem.name] || 0) + 1
+    })
+
+    //Generate HTML for each item in the customer order
+    const itemHTMLArr = Object.keys(counts).map(itemName => {
+        const count = counts[itemName]
+        return `
+        <span>
+            <p>${itemName}</p>
+            <p>x${count}</p>
+            <button data-item='${itemName}' class='remove-btn'>(remove)</button>
+            <p class='price-display'>$${getPriceForItem(itemName)}</p>
+        </span>
     `
-    )
+    })
+
+    customerOrderHTMLArr = itemHTMLArr
+
     renderCustomerOrder()
+
 }
+
+const getPriceForItem = (itemName) => {
+    // Add logic to get the price for each item (e.g., from a menu or predefined prices)
+    switch (itemName) {
+        case 'Hamburger':
+            return 12;
+        case 'Beer':
+            return 12;
+        case 'Pizza':
+            return 14;
+        default:
+            return 0;
+    }
+};
 
 const renderCustomerOrder = () => {
     document.querySelector('#customer-order').innerHTML = customerOrderHTMLArr.join(' ')
