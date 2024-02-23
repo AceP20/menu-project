@@ -27,6 +27,7 @@ document.addEventListener('click', (e) => {
     if (e.target.dataset.name) {
         customerOrderArr.push(e.target.dataset)
         renderCustomerOrder()
+        document.querySelector('#order-display').classList.remove('hidden')
     }
 })
 
@@ -43,6 +44,10 @@ document.addEventListener('click', (e) => {
             customerOrderArr.splice(itemIndex, 1)
 
             renderCustomerOrder()
+        }
+
+        if (customerOrderArr.length === 0 ){
+            document.querySelector('#order-display').classList.add('hidden')
         }
     }
 })
