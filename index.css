@@ -12,6 +12,10 @@ body {
     cursor: default;
 }
 
+.hidden {
+    display: none;
+}
+
 header {
     width: 600px;
     height: 200px;
@@ -130,10 +134,7 @@ main section h4 {
     margin-left: auto;
 }
 
-#complete-btn {
-    margin-top: 15px;
-    padding: 20px 0px;
-
+.btn {
     /* styling */
     background-color: 16DB99;
     color: white;
@@ -144,6 +145,62 @@ main section h4 {
     border-radius: 5px;
 }
 
-.hidden {
-    display: none;
+#complete-btn {
+    margin-top: 15px;
+    padding: 20px 0px;
+    cursor: pointer;
+}
+
+form {
+    position: fixed;
+    padding: 25px;
+    top: 20%;
+    left: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+
+    /* styling */
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+}
+
+#pay-btn {
+    width: 100%;
+    padding: 25px 0px;
+    cursor: pointer;
+}
+
+/* Disable the spinners for number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+form input {
+    width: 475px;
+    height: 75px;
+    padding-left: 25px;
+}
+
+aside {
+    padding: 25px;
+    margin-top: 25px;
+    
+
+    /* styling */
+    background-color: ECFDF5;
+    color: 065F46;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 5px;
 }

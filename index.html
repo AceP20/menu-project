@@ -21,13 +21,23 @@
             <div class='menu' id="menu">
                 
             </div>
-            <section id="order-display" >
+            <section id="order-display" class="hidden" >
                 <h4>Your Order</h4>
                 <div id="customer-order">
                 </div>
                 <p id="total-price-display">Total Price:</p>
-                <button id="complete-btn">Complete order</button>
+                <button id="complete-btn" class="btn">Complete order</button>
             </section>
+            <form id="payment-form" class="hidden">
+                <h3>Enter card information</h3>
+                <input type="text" id="user-name" name="user-name" placeholder="Enter your name" required>
+                <input type="number" id="card-number" name="card-number" placeholder="Enter card number" required>
+                <input type="number" id="card-cvv" name="card-cvv" placeholder="Enter CVV" required>
+                <button type="button" id="pay-btn" value="Pay" class="btn" >Pay</button> 
+            </form>
+            <aside class="hidden">
+                
+            </aside>
         </main>
 	<script type='module' src="index.js"></script>
     </body>

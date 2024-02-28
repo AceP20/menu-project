@@ -27,6 +27,7 @@ document.addEventListener('click', (e) => {
     if (e.target.dataset.name) {
         customerOrderArr.push(e.target.dataset)
         renderCustomerOrder()
+        document.querySelector('aside').classList.add('hidden')
         document.querySelector('#order-display').classList.remove('hidden')
     }
 })
@@ -46,7 +47,7 @@ document.addEventListener('click', (e) => {
             renderCustomerOrder()
         }
 
-        if (customerOrderArr.length === 0 ){
+        if (customerOrderArr.length === 0) {
             document.querySelector('#order-display').classList.add('hidden')
         }
     }
@@ -93,16 +94,28 @@ const renderCustomerOrder = () => {
     document.querySelector('#total-price-display').innerHTML = `Total Price: <span>$${totalPrice}</span>`
 }
 
+// Opens of payment form after complete is clicked
+document.querySelector('#complete-btn').addEventListener('click', () => {
+    document.querySelector('#payment-form').classList.remove('hidden')
+})
 
 
 
+// completes order and also resets input fields
+document.querySelector('#pay-btn').addEventListener('click', (e) => {
+
+    // hides and displays what is needed and not
+    document.querySelector('#order-display').classList.toggle('hidden')
+    document.querySelector('#payment-form').classList.toggle('hidden')
+    document.querySelector('aside').classList.toggle('hidden')
 
 
+    //saves input name locally to use later
+    const userNameInput = document.getElementById('user-name').value;
+    //Confirms order has been placed
+    document.querySelector('aside').innerHTML = `<p>Thanks, ${userNameInput}! Your order is on its way!</p>`
 
-
-
-
-
-
-
-
+    // reset payment info as well as customer's order
+    document.querySelector('#payment-form').reset()
+    customerOrderArr.length = 0;
+})
