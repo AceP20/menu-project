@@ -175,17 +175,6 @@ form {
     cursor: pointer;
 }
 
-/* Disable the spinners for number input */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
 form input {
     width: 475px;
     height: 75px;

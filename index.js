@@ -102,7 +102,8 @@ document.querySelector('#complete-btn').addEventListener('click', () => {
 
 
 // completes order and also resets input fields
-document.querySelector('#pay-btn').addEventListener('click', (e) => {
+document.querySelector('#payment-form').addEventListener('submit', (e) => {
+    e.preventDefault()
 
     // hides and displays what is needed and not
     document.querySelector('#order-display').classList.toggle('hidden')
@@ -112,6 +113,7 @@ document.querySelector('#pay-btn').addEventListener('click', (e) => {
 
     //saves input name locally to use later
     const userNameInput = document.getElementById('user-name').value;
+    // localStorage.setItem(userName, userNameInput)
     //Confirms order has been placed
     document.querySelector('aside').innerHTML = `<p>Thanks, ${userNameInput}! Your order is on its way!</p>`
 
